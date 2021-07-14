@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: servicio-nginx
+spec:
+  selector:
+    app: nginxdemo
+  ports:
+    - protocol: TCP
+      port: 9080
+      targetPort: 80
+  type: LoadBalancer
