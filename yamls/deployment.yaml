@@ -6,12 +6,16 @@ spec:
   selector:
     matchLabels:
       app: nginxdemo
-  replicas: 1
+  replicas: 9
   template:
     metadata:
       labels:
         app: nginxdemo
     spec:
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
       containers:
         - name: nginxdemo
           image: nginx
