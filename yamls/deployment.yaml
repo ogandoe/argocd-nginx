@@ -25,5 +25,10 @@ spec:
               cpu: "100m"
           ports:
             - containerPort: 80
+      tolerations:
+        - key: "node.kubernetes.io/unreachable"
+          operator: "Exists"
+          effect: "NoExecute"
+          tolerationSeconds: 10      
       nodeSelector:
         TipoNodo: worker
